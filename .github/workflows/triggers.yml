@@ -1,20 +1,27 @@
 name: First workflow
-run-name: ${{github.actor}}
-on: [push , pull_request_review,workflow_dispatch]
+run-name: ${{ github.actor }}
+on: [push, pull_request_review, workflow_dispatch]
 
 jobs:
- linux-os:
-  runs-on: ubuntu-latest
-  steps: 
-   - name: Checkout
-     uses: actions/checkout@v4.2.2
-   - name: Print the directory
-      run:|
-       pwd
-       echo $GITHUB_WORKSPACE
- windows-os:
-  runs-on: windows-latest
-  steps: 
-   - name: Checkout
-     uses: actions/checkout@v4.2.2
-   - run: dir
+  linux-os:
+    runs-on: ubuntu-latest
+    steps: 
+    - name: Checkout
+      uses: actions/checkout@v4.2.2
+
+    - name: Print the directory
+      run: |
+        pwd
+        echo $GITHUB_WORKSPACE
+
+  windows-os:
+    runs-on: windows-latest
+    steps: 
+    - name: Checkout
+      uses: actions/checkout@v4.2.2
+
+    - name: Print the directory
+      run: |
+        dir
+        echo $env:GITHUB_WORKSPACE
+      shell: pwsh
